@@ -1,100 +1,108 @@
-# 🍕 Pizza Burn Detection Model (Using ANN)
+# 🍕 Pizza Image Classification: Burnt vs Fresh Pizza
 
-🟩 Project Overview
+📌 Objective:
 
-A famous pizza franchise with outlets in over 90 countries started home delivery services, but some customers began exploiting the refund system by falsely claiming they received burnt pizzas. To address this, the franchise decided to integrate a pizza detection model into their app. Customers can upload pizza images, and the model classifies them as either burnt or good, automating the refund decision process.
+This project aims to build a machine learning model capable of classifying pizza images into two categories: "Burnt Pizza" and "Fresh Pizza". The model is trained on labeled image data, leveraging a neural network to learn visual features and accurately predict the state of a pizza from unseen images.
 
-🚀 Goal: Build an image classification model using an Artificial Neural Network (ANN) to detect whether a pizza is burnt or not, without using CNNs or rule-based models.
-
-📂 Dataset Description
-
-Training Set: Contains images of both burnt and good pizzas, organized into labeled folders.
-
-Burnt pizza → 0
-
-Good pizza → 1
-
-Test Set: Contains mixed images of burnt and good pizzas for model evaluation.
-
-📈 Approach
-
-Data Preprocessing:
-
-Resized images to a fixed dimension (e.g., 128x128).
-
-Flattened images into 1D vectors.
-
-Normalized pixel values (0-255 scaled to 0-1).
-
-Encoded labels (burnt: 0, good: 1).
-
-Model Architecture:
-
-Input Layer: Number of neurons = flattened image size.
-
-Hidden Layers: Multiple dense layers with ReLU activation.
-
-Output Layer: Single neuron with sigmoid activation.
-
-Training Details:
-
-Loss Function: Binary Crossentropy
-
-Optimizer: Adam
-
-Evaluation Metric: Accuracy
-
-🚀 How to Run the Project
-
-Clone the Repository:
-
-git clone https://github.com/Rashu0304/Pizza-Burn-Detection-Model-Using-ANN-.git
-cd pizza-detection-ann
-
-Install Required Libraries:
-
-pip install -r requirements.txt
-
-Train the Model:
-
-python train.py
-
-Test the Model:
-
-python test.py
-
-Evaluate Accuracy:
-
-python evaluate.py
-
-🧠 Results
-
-Training Accuracy: XX%
-
-Test Accuracy: XX%
-
-The model successfully classifies pizza images as either burnt or good, helping automate the refund process and reduce fraudulent claims.
-
-📚 Technologies Used
+🛠️ Tools & Libraries Used:
 
 Python
 
-TensorFlow / Keras
+TensorFlow/Keras
 
-NumPy
+scikit-learn
 
-OpenCV / PIL
+OpenCV
 
-📄 Future Improvements
+Matplotlib & Seaborn
 
-Experiment with data augmentation to improve generalization.
+Google Colab (for execution)
 
-Try transfer learning with pre-trained models (if constraints allow future iterations).
+tqdm (for progress tracking)
 
-Fine-tune hyperparameters for better accuracy.
+📂 Dataset Setup:
 
-🙌 Acknowledgements
+The training and testing datasets are stored in RAR files on Google Drive. The project includes steps to mount Google Drive, install necessary packages, and extract the dataset for model training.
 
-Data collected from various online sources.
+🧠 Model Architecture:
 
-Guided by project constraints to stick to ANN-based models.
+A simple yet powerful feedforward neural network was used:
+
+Input Layer: Flattened image data (128x128x3)
+
+Hidden Layers:
+
+Dense (1024 units, ReLU activation)
+
+Dropout (40%)
+
+Dense (512 units, ReLU activation)
+
+Output Layer: Dense (2 units, Softmax activation)
+
+The model is compiled with the Adam optimizer and trained using sparse categorical cross-entropy loss.
+
+📊 Model Training:
+
+Train-Test Split: 80% training, 20% testing
+
+Epochs: 50
+
+Batch Size: 32
+
+Training accuracy and loss, as well as validation metrics, are tracked across epochs to monitor performance.
+
+🧩 Evaluation:
+
+Accuracy: Achieved around 88% test accuracy
+
+Loss: Low test loss indicating a well-generalized model
+
+🟢 Classification Report & Confusion Matrix:
+
+Comprehensive evaluation using scikit-learn metrics to analyze precision, recall, and F1 scores for both classes.
+
+📈 Visualization:
+
+Training vs Validation Accuracy Plot
+
+Training vs Validation Loss Plot
+
+Confusion Matrix Heatmap
+
+🔮 Prediction:
+
+The model makes predictions on test images, with outputs converted to class labels.
+
+💾 Model Saving:
+
+The trained model is saved as an H5 file for future inference.
+
+🚀 Key Takeaways:
+
+Image Preprocessing: Resizing, normalization, and flattening improved model performance.
+
+Overfitting Prevention: Dropout layers helped prevent overfitting.
+
+Real-World Applicability: The project demonstrates how deep learning can solve practical image classification problems, with potential extensions to broader food quality detection systems.
+
+📘 How to Run the Project:
+
+Clone the repository and upload the notebook to Google Colab.
+
+Mount Google Drive and upload the dataset.
+
+Install required libraries (rarfile, TensorFlow, etc.).
+
+Train the model or load the saved model for inference.
+
+Visualize results and analyze the model's performance.
+
+📂 Project Structure:
+
+├── Dataset
+│   ├── train (Burnt & Fresh Pizza images)
+│   └── test (Burnt & Fresh Pizza images)
+├── pizza_classifier.ipynb
+└── pizza_classifier_model.h5
+
